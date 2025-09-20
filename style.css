@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Cake 🎂</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cake-section">
+    <h1>🎂 Happy Birthday Janice 🎂</h1>
+    <img src="https://media.giphy.com/media/l0MYB8Ory7Hqefo9a/giphy.gif" alt="Cake" class="cake">
+  </div>
+
+  <canvas id="confetti-canvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script>
+    const canvas = document.getElementById("confetti-canvas");
+    const confettiLauncher = confetti.create(canvas, { resize: true });
+
+    // Confetti burst loop
+    let duration = 5 * 1000;
+    let end = Date.now() + duration;
+
+    (function frame() {
+      confettiLauncher({
+        particleCount: 7,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  </script>
+</body>
+</html>
